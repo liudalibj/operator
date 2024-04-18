@@ -6,7 +6,7 @@ ARG IMG_VERSION
 # Build the manager binary
 FROM ${IMG_NAME:-golang}:${IMG_VERSION:-1.20} as builder
 
-WORKDIR /workspace
+WORKDIR /work
 # Copy the Go Modules manifests
 COPY go.mod go.mod
 COPY go.sum go.sum
@@ -26,7 +26,7 @@ RUN CGO_ENABLED=0 GOOS=linux go build -a -o manager main.go
 # Refer to https://github.com/GoogleContainerTools/distroless for more details
 FROM gcr.io/distroless/static:nonroot
 WORKDIR /
-COPY --from=builder /workspace/manager .
+COPY --from=builder /work/manager .
 USER 65532:65532
 
 ENTRYPOINT ["/manager"]

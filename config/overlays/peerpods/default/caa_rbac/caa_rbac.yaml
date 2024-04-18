@@ -1,4 +1,4 @@
-# This file is based on https://github.com/confidential-containers/cloud-api-adaptor/blob/staging/install/rbac/peer-pod.yaml
+# This file is based on https://github.com/confidential-containers/cloud-api-adaptor/blob/main/src/cloud-api-adaptor/install/rbac/peer-pod.yaml
 # It adds the required rules to the default SA which is used by CAA DA
 # when owner reference is both object must be on the same namespace, hence,
 # caa should have cluster-wide permissions to support any pod namespace
